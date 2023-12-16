@@ -168,13 +168,13 @@ def demo(data_type):
     test_support_output= np.squeeze(test_support_output)
     softmax_test_prob = ori_model.predict(x_test)
        
-    ece_softmax =calculate_sce(softmax_test_prob,y_test,15)
+    sce_softmax =calculate_sce(softmax_test_prob,y_test,15)
         
     rank_lst,my_test_prob =DATIS_test_input_selection(softmax_test_prob,train_support_output,y_train,test_support_output,y_test,10)
     
-    my_ece =calculate_sce(my_test_prob,y_test,15)
+    my_sce =calculate_sce(my_test_prob,y_test,15)
 
-    print("softmax_sce: {:.3f}, our_sce: {:.3f}".format(ece_softmax, my_ece))
+    print("softmax_sce: {:.3f}, our_sce: {:.3f}".format(sce_softmax, my_sce))
 
     budget_ratio_list =[0.005,0.01,0.02,0.03,0.05,0.1]
 
